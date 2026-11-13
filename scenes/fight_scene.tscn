@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://bilr1yi4x24rl"]
+
+[ext_resource type="Script" uid="uid://bkli7qiijight" path="res://scripts/fight/board.gd" id="1_7aqs0"]
+[ext_resource type="Script" uid="uid://cgkvy7udi54g" path="res://scripts/fight/fight_scene.gd" id="1_eobh7"]
+[ext_resource type="Texture2D" uid="uid://dgww2i1fv3xce" path="res://sprites/backgrounds/ground_placeholder.png" id="1_nff5x"]
+[ext_resource type="Texture2D" uid="uid://w4njx6kecoa5" path="res://sprites/backgrounds/interface.webp" id="1_p8b18"]
+[ext_resource type="Script" uid="uid://d4m3mc4sh1ugs" path="res://scripts/fight/player.gd" id="3_bu534"]
+[ext_resource type="Texture2D" uid="uid://3u0ir18b3jsd" path="res://sprites/backgrounds/background_1.png" id="3_gksjr"]
+[ext_resource type="Texture2D" uid="uid://dn1bgte4lns3p" path="res://sprites/animations/main_chara/merged.png" id="5_0ch2g"]
+[ext_resource type="Texture2D" uid="uid://bx34nexjqrh08" path="res://sprites/tokens/token_atk.png" id="6_0ch2g"]
+[ext_resource type="FontFile" uid="uid://btbnjcq22pjwr" path="res://cckissandtellint-regular.ttf" id="6_6ls7e"]
+[ext_resource type="Script" uid="uid://dnmlqf1wpw8cp" path="res://scripts/fight/action_list.gd" id="6_reipo"]
+
+[node name="fight_scene" type="Node2D" unique_id=975215485]
+script = ExtResource("1_eobh7")
+
+[node name="Board" type="Node2D" parent="." unique_id=1860872813]
+z_index = 1
+position = Vector2(0, 71)
+script = ExtResource("1_7aqs0")
+
+[node name="BoardGround" type="Sprite2D" parent="Board" unique_id=270936404]
+texture = ExtResource("1_nff5x")
+
+[node name="Player" type="Node2D" parent="Board" unique_id=1786612449]
+z_index = 5
+position = Vector2(-400, 0)
+script = ExtResource("3_bu534")
+
+[node name="Sprite2D" type="Sprite2D" parent="Board/Player" unique_id=339134338]
+position = Vector2(0, -3)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("5_0ch2g")
+offset = Vector2(41, -98)
+hframes = 3
+vframes = 3
+
+[node name="Attack" type="Node2D" parent="Board/Player" unique_id=1118716474]
+position = Vector2(0, -181)
+
+[node name="Sprite2D" type="Sprite2D" parent="Board/Player/Attack" unique_id=1839391630]
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("6_0ch2g")
+
+[node name="Label" type="Label" parent="Board/Player/Attack" unique_id=1966699630]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_6ls7e")
+theme_override_font_sizes/font_size = 20
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UI" type="Node2D" parent="." unique_id=733775155]
+z_index = 10
+
+[node name="TopUI" type="Node2D" parent="UI" unique_id=1803928096]
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/TopUI" unique_id=1911963675]
+
+[node name="Energy" type="Node2D" parent="UI/TopUI" unique_id=140743883]
+z_index = 1
+position = Vector2(-540, -300)
+
+[node name="Label" type="Label" parent="UI/TopUI/Energy" unique_id=1930038528]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -89.0
+offset_top = -33.0
+offset_bottom = 33.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.2, 0.14493334, 0.08200001, 1)
+theme_override_fonts/font = ExtResource("6_6ls7e")
+theme_override_font_sizes/font_size = 64
+text = "10"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="bottomUI" type="Node2D" parent="UI" unique_id=900746376]
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/bottomUI" unique_id=1961487668]
+position = Vector2(-1, -1)
+texture = ExtResource("1_p8b18")
+
+[node name="ActionList" type="Node2D" parent="UI/bottomUI" unique_id=1049567608]
+position = Vector2(0, 280)
+script = ExtResource("6_reipo")
+
+[node name="fight_camera" type="Camera2D" parent="." unique_id=1510692980]
+
+[node name="fight_background" type="Sprite2D" parent="fight_camera" unique_id=2120981721]
+texture = ExtResource("3_gksjr")
+
+[connection signal="ready" from="Board/Player" to="UI/bottomUI/ActionList" method="_on_player_ready"]
+[connection signal="ready" from="UI/bottomUI/ActionList" to="Board/Player" method="_on_action_list_ready"]

@@ -1,0 +1,181 @@
+[gd_scene format=3 uid="uid://d4i3fyxqtak22"]
+
+[ext_resource type="Script" uid="uid://cpoyjj1hbk3gq" path="res://scripts/fight/monster.gd" id="1_f0kas"]
+[ext_resource type="Texture2D" uid="uid://br0wchqfkv6u3" path="res://sprites/animations/blob/idle_2.png" id="2_yjnpf"]
+[ext_resource type="Texture2D" uid="uid://bgi6to65kskxr" path="res://sprites/animations/blob/strike_1.png" id="3_2a166"]
+[ext_resource type="Texture2D" uid="uid://c0x2eqpj1o1v6" path="res://sprites/animations/blob/strike_2.png" id="4_ap757"]
+[ext_resource type="Texture2D" uid="uid://yuqw4m1s0jlp" path="res://sprites/animations/blob/damage.png" id="5_8hisj"]
+[ext_resource type="Texture2D" uid="uid://bdjkach0cm624" path="res://sprites/animations/blob/death_1.png" id="6_mgrhg"]
+[ext_resource type="Texture2D" uid="uid://drdqsbvg6w22p" path="res://sprites/animations/blob/death_2.png" id="7_1cce1"]
+[ext_resource type="Texture2D" uid="uid://bbb5m6rkqt004" path="res://sprites/animations/blob/death_3.png" id="8_1d7eb"]
+[ext_resource type="Texture2D" uid="uid://2x2b6oswgyun" path="res://sprites/animations/blob/death_4.png" id="9_mo4ku"]
+[ext_resource type="Texture2D" uid="uid://dxhf0c2bvh2sp" path="res://sprites/animations/blob/idle_1.png" id="10_lct15"]
+[ext_resource type="Texture2D" uid="uid://brw46xywbugn7" path="res://sprites/animations/blob/idle_3.png" id="11_01gc6"]
+[ext_resource type="Texture2D" uid="uid://wla7b6njibqb" path="res://sprites/animations/blob/idle_4.png" id="12_2lk08"]
+[ext_resource type="Texture2D" uid="uid://bbobx3l1dvkin" path="res://sprites/animations/blob/spawn_1.png" id="13_cxl4p"]
+[ext_resource type="Texture2D" uid="uid://b1is0wuayes75" path="res://sprites/animations/blob/spawn_2.png" id="14_gvolf"]
+[ext_resource type="Texture2D" uid="uid://cvnt42txce455" path="res://sprites/animations/blob/spawn_3.png" id="15_flxix"]
+[ext_resource type="Texture2D" uid="uid://cydhwyit47oop" path="res://sprites/animations/blob/spawn_4.png" id="16_qew7p"]
+[ext_resource type="Texture2D" uid="uid://c74enyoc33p86" path="res://sprites/animations/blob/spawn_5.png" id="17_oo6ot"]
+[ext_resource type="Texture2D" uid="uid://tq5p5318igic" path="res://sprites/animations/blob/spawn_6.png" id="18_0euw7"]
+[ext_resource type="Texture2D" uid="uid://uur7pnvfh8yp" path="res://sprites/health_bar.png" id="19_0kxri"]
+[ext_resource type="FontFile" uid="uid://btbnjcq22pjwr" path="res://cckissandtellint-regular.ttf" id="20_i05pv"]
+[ext_resource type="Texture2D" uid="uid://b3hb5txupfymf" path="res://sprites/icons/monster_pushBackMore.png" id="21_r0hkn"]
+[ext_resource type="Texture2D" uid="uid://b1ee8iw4wntg8" path="res://sprites/icons/monster_pushBack.png" id="22_w0tu6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ei7v0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_2a166")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ap757")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_8hisj")
+}],
+"loop": false,
+"name": &"damage",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_mgrhg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_1cce1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_1d7eb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_mo4ku")
+}],
+"loop": false,
+"name": &"death",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_lct15")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_yjnpf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_01gc6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_2lk08")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_cxl4p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_gvolf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_flxix")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_qew7p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_oo6ot")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_0euw7")
+}],
+"loop": false,
+"name": &"spawn",
+"speed": 3.0
+}]
+
+[node name="Monster" type="Node2D" unique_id=1171423324]
+script = ExtResource("1_f0kas")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=873494619]
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_ei7v0")
+animation = &"spawn"
+frame = 5
+frame_progress = 1.0
+offset = Vector2(0, -99)
+
+[node name="healthBar" type="Node2D" parent="." unique_id=1132031843]
+position = Vector2(0, -180)
+
+[node name="Sprite2D" type="Sprite2D" parent="healthBar" unique_id=841648523]
+scale = Vector2(1, 3)
+texture = ExtResource("19_0kxri")
+
+[node name="healthAmount" type="Label" parent="healthBar" unique_id=923787272]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("20_i05pv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="nextnextSmallAction" type="Sprite2D" parent="." unique_id=918276524]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(-100, -230)
+scale = Vector2(0.06, 0.06)
+
+[node name="nextSmallAction" type="Sprite2D" parent="." unique_id=1786707884]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(-100, -180)
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("21_r0hkn")
+
+[node name="nextAttack" type="Node2D" parent="." unique_id=1502736407]
+position = Vector2(-100.00001, -120.00001)
+scale = Vector2(0.6, 0.6)
+
+[node name="Sprite2D" type="Sprite2D" parent="nextAttack" unique_id=532742442]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(0, -2.670288e-05)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("22_w0tu6")
+
+[node name="PushAmount" type="Label" parent="nextAttack" unique_id=289183205]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.5
+offset_top = -14.0
+offset_right = 12.5
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.8245, 0.97, 0.96272504, 1)
+theme_override_fonts/font = ExtResource("20_i05pv")
+theme_override_font_sizes/font_size = 64
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
