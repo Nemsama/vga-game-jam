@@ -10,23 +10,25 @@ The game jam lasted for 2 days or 54h on the theme **Arcade**: all games submite
 We choose to develop a turn-based roguelike where the player is fighting monsters one after the other. The particularity is that instead of losing life when hit, the player is pushed towards a cliff so that the goal is to catch good buffs only present near the edge while comming back to safety before the monster pushes.
 The only way to damage the monster is to grab *attack buffs* that deals more damage the closer they are to the edge.
 
-We choose to use the Godot engine for this project, at the start of the project only Armand Guillet had experience in Godot, he helped the rest of the group to develop with Godot.
+We choose to use the Godot engine for this project. At the start of the project only Armand Guillet had experience in Godot, he helped the rest of the group to get used to Godot.
 
 ### Disclamer
 
 This repo is not acctually the original developped game but a cleaner remade version with almost only new code by me (assets were reused).
+
+The purpose of this repo is to show how the game looked like, it does not track the whole history of the project.
 
 ## Contributors
 
 - [Nils Desbois-Renaudin] - Almost everything from this version; game mechanics and UI in the base game.
 - [Armand Guillet] - Guidance over the Godot engine, overall code structure and some game mechanics in the base game as well as designing and balancing tokens.
 - [Bastien Brogliato--Martin] - Probabilistic distribution of tokens (also in this version), design and balancing of tokens, token assets.
-- [Anthony Ruberti] - All character sprites and animations and the interface backgrounds
-- [Garance Baylac] - Background assets
+- [Anthony Ruberti] - All character sprites and animations and the interface background.
+- [Garance Baylac] - The main background artwork.
 
-## Features
+## Playing the game
 
-The game was originally made for arcade machine input (with joystick and buttons) but when re-making this version, I choose to use more computer-friendly inputs.
+The game was originally made for arcade machine inputs (with joystick and buttons) but when re-making this version, I choose to use more computer-friendly inputs.
 
 #### Gameplay loop
 
@@ -45,7 +47,7 @@ The game was originally made for arcade machine input (with joystick and buttons
 
 ## Building & Running
 
-The whole purpose of this project was to finish properly and clean the code developped during the game jam, I do not intend to publish this game but if you have godot you can open the project and test it.
+The whole purpose of this project was to clean and finish properly the code developed during the game jam, I do not intend to publish this game but if you have godot you can open the project and test it.
 
 ## License
 
